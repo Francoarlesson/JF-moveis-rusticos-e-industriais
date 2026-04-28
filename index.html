@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábio Móveis - Rústico & Industrial</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Sticky -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>JF<span>Madeiras</span></h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h2 class="hero-title">Móveis Rústicos & Industriais</h2>
+                <p class="hero-subtitle">Design autêntico em madeira maciça e ferro forjado</p>
+                <a href="#catalogo" class="btn btn-primary hero-cta">Explorar Catálogo</a>
+            </div>
+        </section>
+
+        <!-- Catálogo Section -->
+        <section class="catalogo" id="catalogo">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nosso Catálogo</h2>
+                    <p class="section-subtitle">Peças exclusivas feitas à mão</p>
+                </div>
+
+                <!-- Filtro de Categorias -->
+                <div class="filtro-categorias">
+                    <button class="filtro-btn active" data-categoria="todos">Todos</button>
+                    <button class="filtro-btn" data-categoria="rustico">Rústico</button>
+                    <button class="filtro-btn" data-categoria="industrial">Industrial</button>
+                    <button class="filtro-btn" data-categoria="escritorio">Escritório</button>
+                </div>
+
+                <!-- Grid de Produtos -->
+                <div class="produtos-grid" id="produtosGrid">
+                    <!-- Produto 1 -->
+                    <article class="produto-card" data-categoria="rustico">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop" alt="Sofá Rústico">
+                            <div class="produto-overlay">
+                                <span class="produto-material">Madeira maciça de carvalho</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Sofá Rústico Classic</h3>
+                            <p class="produto-descricao">Conforto e elegância em madeira de reflorestamento.</p>
+                            <span class="produto-preco">R$ 2.890,00</span>
+                        </div>
+                    </article>
+
+                    <!-- Produto 2 -->
+                    <article class="produto-card" data-categoria="industrial">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=300&fit=crop" alt="Mesa Industrial">
+                            <div class="produto-overlay">
+                                <span class="produto-material">Ferro fundido + madeira de demolição</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Mesa Industrial Urban</h3>
+                            <p class="produto-descricao">Design robusto com estrutura em ferro oxidado.</p>
+                            <span class="produto-preco">R$ 1.590,00</span>
+                        </div>
+                    </article>
+
+                    <!-- Produto 3 -->
+                    <article class="produto-card" data-categoria="escritorio">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400&h=300&fit=crop" alt="Escrivaninha">
+                            <div class="produto-overlay">
+                                <span class="produto-material">Madeira de pinus + ferro preto</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Escrivaninha Loft</h3>
+                            <p class="produto-descricao">Perfeita para home office com estilo industrial.</p>
+                            <span class="produto-preco">R$ 980,00</span>
+                        </div>
+                    </article>
+
+                    <!-- Produto 4 -->
+                    <article class="produto-card" data-categoria="rustico">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&h=300&fit=crop" alt="Poltrona Rústica">
+                            <div class="produto-overlay">
+                                <span class="produto-material">Madeira de eucalipto tratado</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Poltrona Colonial</h3>
+                            <p class="produto-descricao">Conforto tradicional com acabamento artesanal.</p>
+                            <span class="produto-preco">R$ 750,00</span>
+                        </div>
+                    </article>
+
+                    <!-- Produto 5 -->
+                    <article class="produto-card" data-categoria="industrial">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=300&fit=crop" alt="Estante Industrial">
+                            <div class="produto-overlay">
+                                <span class="produto-material">Ferro preto + ripas de madeira</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Estante Metal & Wood</h3>
+                            <p class="produto-descricao">Armazenamento com design arquitetônico.</p>
+                            <span class="produto-preco">R$ 1.250,00</span>
+                        </div>
+                    </article>
+
+                    <!-- Produto 6 -->
+                    <article class="produto-card" data-categoria="escritorio">
+                        <div class="produto-img">
+                            <img src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=400&h=300&fit=crop" alt="Mesa de Escritório">
+                            <div class="produto-overlay">
+                                <span class="produto-material">MDF naval + pernas de ferro</span>
+                            </div>
+                        </div>
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Mesa Executiva Loft</h3>
+                            <p class="produto-descricao">Espaço de trabalho moderno e funcional.</p>
+                            <span class="produto-preco">R$ 1.450,00</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos Section -->
+        <section class="depoimentos" id="depoimentos">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">O que dizem nossos clientes</h2>
+                    <p class="section-subtitle">Satisfação garantida em cada peça</p>
+                </div>
+                <div class="depoimentos-grid">
+                    <article class="depoimento-card">
+                        <div class="depoimento-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Cliente">
+                        </div>
+                        <blockquote class="depoimento-texto">
+                            "A mesa industrial superou minhas expectativas. Acabamento impecável e entrega antes do prazo!"
+                        </blockquote>
+                        <cite class="depoimento-autor">— Roberto Silva</cite>
+                        <div class="depoimento-nota">★★★★★</div>
+                    </article>
+
+                    <article class="depoimento-card">
+                        <div class="depoimento-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Cliente">
+                        </div>
+                        <blockquote class="depoimento-texto">
+                            "Móveis de extrema qualidade. O sofá rústico é o destaque da minha sala."
+                        </blockquote>
+                        <cite class="depoimento-autor">— Mariana Costa</cite>
+                        <div class="depoimento-nota">★★★★★</div>
+                    </article>
+
+                    <article class="depoimento-card">
+                        <div class="depoimento-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="Cliente">
+                        </div>
+                        <blockquote class="depoimento-texto">
+                            "Perfeito para meu home office. A escrivaninha Loft é linda e muito funcional."
+                        </blockquote>
+                        <cite class="depoimento-autor">— Carlos Oliveira</cite>
+                        <div class="depoimento-nota">★★★★★</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="contato">
+            <div class="container footer-content">
+                <div class="footer-section">
+                    <h3>Fábio Móveis</h3>
+                    <p>Móveis artesanais em madeira maciça e ferro.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@fabiomoveis.com.br</p>
+                    <p>📍 Rua das Artes, 123 - São Paulo, SP</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fábio Móveis. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

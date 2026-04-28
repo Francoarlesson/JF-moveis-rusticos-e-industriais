@@ -1,0 +1,1049 @@
+/* ========================================
+   VARIÁVEIS DE DESIGN
+   Sistema de cores e configurações globais
+   ======================================== */
+:root {
+    /* Cores Principais */
+    --cor-ferro: #262626;
+    --cor-ferro-claro: #3d3d3d;
+    --cor-madeira: #5c4033;
+    --cor-madeira-escura: #3d2a21;
+    --cor-madeira-clara: #8b6914;
+    
+    /* Cores de Fundo */
+    --cor-fundo: #f4f1ea;
+    --cor-fundo-escuro: #e8e4dc;
+    --cor-branco: #ffffff;
+    
+    /* Cores de Texto */
+    --cor-texto-principal: #1a1a1a;
+    --cor-texto-secundario: #555555;
+    --cor-texto-claro: #f4f1ea;
+    
+    /* Cores de Destaque */
+    --cor-destaque: #c9a227;
+    --cor-destaque-hover: #b8911f;
+    
+    /* Espaçamento */
+    --espaco-pequeno: 0.5rem;
+    --espaco-medio: 1rem;
+    --espaco-grande: 2rem;
+    --espaco-muito-grande: 4rem;
+    
+    /* Bordas e Sombras */
+    --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --sombra-forte: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --borda-raio: 8px;
+    --borda-raio-grande: 16px;
+    
+    /* Transições */
+    --transicao-rapida: 0.2s ease;
+    --transicao-normal: 0.3s ease;
+    --transicao-lenta: 0.5s ease;
+    
+    /* Fontes */
+    --fonte-titulo: 'Playfair Display', Georgia, serif;
+    --fonte-corpo: 'Roboto', Arial, sans-serif;
+}
+
+/* ========================================
+   RESET E ESTILOS BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ========================================
+   TIPOGRAFIA
+   ======================================== */
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: var(--espaco-medio);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transicao-rapida);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========================================
+   LAYOUT - Container
+   ======================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--espaco-grande);
+}
+
+/* ========================================
+   HEADER STICKY
+   Efeito de mudança de cor ao rolar
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color var(--transicao-normal), 
+                box-shadow var(--transicao-normal),
+                padding var(--transicao-normal);
+    padding: var(--espaco-medio) 0;
+}
+
+.header.scrolled {
+    background-color: var(--cor-ferro);
+    box-shadow: var(--sombra-forte);
+    padding: var(--espaco-pequeno) 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--cor-branco);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--cor-destaque);
+}
+
+/* Navegação */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--espaco-grande);
+}
+
+.nav-list a {
+    color: var(--cor-branco);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: var(--espaco-pequeno) 0;
+}
+
+/* Linha decorativa abaixo dos links */
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    transition: width var(--transicao-normal);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+.nav-list a:hover {
+    color: var(--cor-destaque);
+}
+
+/* Menu Mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-branco);
+    transition: var(--transicao-rapida);
+}
+
+/* ========================================
+   HERO SECTION
+   Imagem de fundo com overlay e CTA
+   ======================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Imagem de fundo - madeira e ferro */
+    background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Overlay escuro para legibilidade */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(38, 38, 38, 0.7),
+        rgba(38, 38, 38, 0.5)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--cor-branco);
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: var(--espaco-medio);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: var(--espaco-grande);
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Botão CTA */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: var(--borda-raio);
+    cursor: pointer;
+    transition: all var(--transicao-normal);
+}
+
+.btn-primary {
+    background-color: var(--cor-destaque);
+    color: var(--cor-ferro);
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-destaque-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+}
+
+/* ========================================
+   SEÇÕES GERAIS
+   ======================================== */
+section {
+    padding: var(--espaco-muito-grande) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--espaco-muito-grande);
+}
+
+.section-title {
+    color: var(--cor-ferro);
+    margin-bottom: var(--espaco-pequeno);
+    position: relative;
+    display: inline-block;
+}
+
+/* Linha decorativa abaixo do título */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--cor-destaque);
+}
+
+.section-subtitle {
+    color: var(--cor-texto-secundario);
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   CATÁLOGO - Grid de Produtos
+   ======================================== */
+.catalogo {
+    background-color: var(--cor-fundo);
+}
+
+/* Filtro de Categorias */
+.filtro-categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--espaco-medio);
+    margin-bottom: var(--espaco-grande);
+}
+
+.filtro-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid var(--cor-ferro);
+    color: var(--cor-ferro);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: var(--borda-raio);
+    transition: all var(--transicao-normal);
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+    background-color: var(--cor-ferro);
+    color: var(--cor-branco);
+}
+
+/* Grid de Produtos - CSS Grid */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--espaco-grande);
+}
+
+/* Cards de Produto */
+.produto-card {
+    background-color: var(--cor-branco);
+    border-radius: var(--borda-raio-grande);
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    transition: transform var(--transicao-normal), 
+                box-shadow var(--transicao-normal);
+    /* Adiciona perspectiva para efeito 3D no hover */
+    perspective: 1000px;
+}
+
+.produto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-forte);
+}
+
+/* Imagem do produto com overlay */
+.produto-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.produto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transicao-lenta), filter var(--transicao-normal);
+}
+
+.produto-card:hover .produto-img img {
+    transform: scale(1.08);
+    /* Leve escurecimento para destacar */
+    filter: brightness(0.95);
+}
+
+/* Overlay com material - slide up suave */
+.produto-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(38, 38, 38, 0.95),
+        transparent
+    );
+    padding: var(--espaco-grande) var(--espaco-medio) var(--espaco-medio);
+    transform: translateY(100%);
+    transition: transform var(--transicao-normal), opacity var(--transicao-normal);
+    opacity: 0;
+}
+
+.produto-card:hover .produto-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.produto-material {
+    color: var(--cor-destaque);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Informações do produto */
+.produto-info {
+    padding: var(--espaco-grande);
+}
+
+.produto-titulo {
+    color: var(--cor-ferro);
+    font-size: 1.3rem;
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.produto-descricao {
+    color: var(--cor-texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: var(--espaco-medio);
+}
+
+.produto-preco {
+    display: block;
+    color: var(--cor-madeira);
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: var(--fonte-titulo);
+}
+
+/* ========================================
+   DEPOIMENTOS
+   ======================================== */
+.depoimentos {
+    background-color: var(--cor-ferro);
+    color: var(--cor-branco);
+}
+
+.depoimentos .section-title {
+    color: var(--cor-branco);
+}
+
+.depoimentos .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--espaco-grande);
+}
+
+.depoimento-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: var(--espaco-grande);
+    border-radius: var(--borda-raio-grande);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color var(--transicao-normal), 
+                transform var(--transicao-normal),
+                box-shadow var(--transicao-normal);
+}
+
+.depoimento-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Avatar com leve escala no hover */
+.depoimento-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--espaco-medio);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--cor-destaque);
+    transition: transform var(--transicao-normal), border-color var(--transicao-normal);
+}
+
+.depoimento-card:hover .depoimento-avatar {
+    transform: scale(1.1);
+    border-color: var(--cor-branco);
+}
+
+.depoimento-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.depoimento-texto {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--espaco-medio);
+    opacity: 0.9;
+}
+
+.depoimento-autor {
+    display: block;
+    font-weight: 600;
+    color: var(--cor-destaque);
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.depoimento-nota {
+    color: var(--cor-destaque);
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+    background-color: var(--cor-ferro-claro);
+    color: var(--cor-branco);
+    padding-top: var(--espaco-muito-grande);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espaco-grande);
+    padding-bottom: var(--espaco-grande);
+}
+
+.footer-section h3 {
+    color: var(--cor-destaque);
+    margin-bottom: var(--espaco-medio);
+}
+
+.footer-section h4 {
+    color: var(--cor-branco);
+    margin-bottom: var(--espaco-medio);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--espaco-medio);
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--cor-ferro);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color var(--transicao-normal), 
+                transform var(--transicao-rapida);
+}
+
+.social-links a:hover {
+    background-color: var(--cor-destaque);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    background-color: var(--cor-ferro);
+    text-align: center;
+    padding: var(--espaco-medio) 0;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+@media (max-width: 768px) {
+    /* Header mobile */
+    .nav {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    /* Grid de produtos */
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Filtro */
+    .filtro-categorias {
+        gap: var(--espaco-pequeno);
+    }
+    
+    .filtro-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--espaco-medio);
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .btn {
+        padding: 0.875rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   ANIMAÇÕES
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.produto-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.produto-card:nth-child(1) { animation-delay: 0.1s; }
+.produto-card:nth-child(2) { animation-delay: 0.2s; }
+.produto-card:nth-child(3) { animation-delay: 0.3s; }
+.produto-card:nth-child(4) { animation-delay: 0.4s; }
+.produto-card:nth-child(5) { animation-delay: 0.5s; }
+.produto-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* ========================================
+   ANIMAÇÕES DE SCROLL (Intersection Observer)
+   Elementos surgem suavemente ao entrar na viewport
+   ======================================== */
+
+/* Estado inicial - oculto e deslocado para baixo */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Estado final - visível e posição normal */
+.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay escalonado para grupos de elementos */
+.animate-on-scroll[data-animation-delay="0"] { transition-delay: 0s; }
+.animate-on-scroll[data-animation-delay="100"] { transition-delay: 0.1s; }
+.animate-on-scroll[data-animation-delay="200"] { transition-delay: 0.2s; }
+.animate-on-scroll[data-animation-delay="300"] { transition-delay: 0.3s; }
+.animate-on-scroll[data-animation-delay="400"] { transition-delay: 0.4s; }
+.animate-on-scroll[data-animation-delay="500"] { transition-delay: 0.5s; }
+.animate-on-scroll[data-animation-delay="600"] { transition-delay: 0.6s; }
+
+/* ========================================
+   ANIMAÇÕES DA HERO SECTION (Entrada)
+   Sequência staggered na carga da página
+   ======================================== */
+
+/* Estado inicial dos elementos da hero */
+.hero-title,
+.hero-subtitle,
+.hero-cta {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Animação do título */
+.hero-title.hero-animate {
+    animation: heroFadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes heroFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação do subtítulo */
+.hero-subtitle.hero-animate {
+    animation: heroFadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+/* Animação do CTA */
+.hero-cta.hero-animate {
+    animation: heroFadeInUp 0.8s ease-out 0.6s forwards;
+    /* 0.6s de delay para iniciar após o subtítulo */
+}
+
+/* ========================================
+   MICRO-INTERAÇÕES - HOVER NOS CARDS
+   Efeitos suaves e sofisticados
+   ======================================== */
+
+/* Container do card com perspectiva para efeito 3D */
+.produto-card {
+    /* ...existing code... */
+    background-color: var(--cor-branco);
+    border-radius: var(--borda-raio-grande);
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    transition: transform var(--transicao-normal), 
+                box-shadow var(--transicao-normal);
+    /* Adiciona perspectiva para efeito 3D no hover */
+    perspective: 1000px;
+}
+
+.produto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-forte);
+}
+
+/* Zoom sutil na imagem */
+.produto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transicao-lenta), filter var(--transicao-normal);
+}
+
+.produto-card:hover .produto-img img {
+    transform: scale(1.08);
+    /* Leve escurecimento para destacar */
+    filter: brightness(0.95);
+}
+
+/* Overlay com material - slide up suave */
+.produto-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(38, 38, 38, 0.95),
+        transparent
+    );
+    padding: var(--espaco-grande) var(--espaco-medio) var(--espaco-medio);
+    transform: translateY(100%);
+    transition: transform var(--transicao-normal), opacity var(--transicao-normal);
+    opacity: 0;
+}
+
+.produto-card:hover .produto-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Info do produto com leve movimento */
+.produto-info {
+    padding: var(--espaco-grande);
+    transition: transform var(--transicao-normal);
+}
+
+.produto-card:hover .produto-info {
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   MICRO-INTERAÇÕES - BOTÕES
+   Efeitos de hover suaves e elegantes
+   ======================================== */
+
+/* Botão primário com preenchimento gradual */
+.btn-primary {
+    background-color: var(--cor-destaque);
+    color: var(--cor-ferro);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Camada de preenchimento */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cor-destaque-hover);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transicao-normal);
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--cor-branco);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+}
+
+/* Botões de filtro com transição de borda */
+.filtro-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid var(--cor-ferro);
+    color: var(--cor-ferro);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: var(--borda-raio);
+    transition: all var(--transicao-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.filtro-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cor-ferro);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transicao-normal);
+    z-index: -1;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+    color: var(--cor-branco);
+    border-color: var(--cor-ferro);
+}
+
+.filtro-btn:hover::before,
+.filtro-btn.active::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ========================================
+   MICRO-INTERAÇÕES - LINKS DE NAVEGAÇÃO
+   Efeito de sublinhado animado
+   ======================================== */
+
+.nav-list a {
+    color: var(--cor-branco);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: var(--espaco-pequeno) 0;
+}
+
+/* Linha decorativa - expande a partir do centro */
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    transition: width var(--transicao-normal), left var(--transicao-normal);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-list a:hover {
+    color: var(--cor-destaque);
+}
+
+/* ========================================
+   MICRO-INTERAÇÕES - DEPOIMENTOS
+   Efeito de destaque no hover
+   ======================================== */
+
+.depoimento-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: var(--espaco-grande);
+    border-radius: var(--borda-raio-grande);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color var(--transicao-normal), 
+                transform var(--transicao-normal),
+                box-shadow var(--transicao-normal);
+}
+
+.depoimento-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Avatar com leve escala no hover */
+.depoimento-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--espaco-medio);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--cor-destaque);
+    transition: transform var(--transicao-normal), border-color var(--transicao-normal);
+}
+
+.depoimento-card:hover .depoimento-avatar {
+    transform: scale(1.1);
+    border-color: var(--cor-branco);
+}
+
+/* ========================================
+   MICRO-INTERAÇÕES - REDES SOCIAIS
+   Efeito de escala e cor
+   ======================================== */
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--cor-ferro);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color var(--transicao-normal), 
+                transform var(--transicao-rapida),
+                box-shadow var(--transicao-normal);
+}
+
+.social-links a:hover {
+    background-color: var(--cor-destaque);
+    transform: scale(1.15);
+    box-shadow: 0 5px 15px rgba(201, 162, 39, 0.4);
+}
+
+/* ========================================
+   ANIMAÇÃO DE ELEMENTOS DO HEADER
+   Logo com transição suave
+   ======================================== */
+
+.logo {
+    transition: transform var(--transicao-normal);
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo h1 {
+    color: var(--cor-branco);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color var(--transicao-rapida);
+}
+
+.logo:hover h1 {
+    color: var(--cor-destaque);
+}
+
+/* ========================================
+   REDUÇÃO DE MOTION
+   Acessibilidade - respeita preferência do usuário
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .hero-title,
+    .hero-subtitle,
+    .hero-cta {
+        opacity: 1;
+        transform: none;
+    }
+}
